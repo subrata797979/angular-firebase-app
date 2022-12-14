@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  authState: any = null;
+
   constructor(private fireauth : AngularFireAuth, private router : Router) { }
 
   // login
@@ -39,5 +41,10 @@ export class AuthService {
     }, err=>{
       alert(err.message); 
     })
+  }
+
+  // get user email
+  get_user_email() {
+    localStorage.setItem('user_email',this.fireauth.user);
   }
 }
